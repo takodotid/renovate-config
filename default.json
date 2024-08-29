@@ -1,0 +1,47 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:base", "helpers:pinGitHubActionDigests", "group:allNonMajor", ":semanticCommits"],
+	"labels": ["meta: dependencies"],
+	"schedule": ["before 6am"],
+	"timezone": "Asia/Jakarta",
+	"docker": {
+		"enabled": true,
+		"rangeStrategy": "bump"
+	},
+	"npm": {
+		"rangeStrategy": "bump",
+		"packageRules": [
+			{
+				"matchUpdateTypes": ["minor", "patch"],
+				"matchCurrentVersion": "!/^0/",
+				"automerge": true
+			},
+			{
+				"matchPackageNames": [
+					"@typescript-eslint/*",
+					"typescript-eslint",
+					"eslint", 
+					"typescript",
+					"@hazmi35/eslint-config"
+				],
+				"groupName": "ESLint"
+			},
+			{
+				"matchPackageNames": [
+					"drizzle-orm",
+					"pg",
+					"drizzle-kit"
+				],
+				"groupName": "Drizzle"
+			},
+			{
+				"matchManagers": ["dockerfile", "docker-compose"],
+				"groupName": "Docker"
+			},
+			{
+				"matchManagers": ["github-actions"],
+				"groupName": "CI/CD"
+			}
+		]
+	}
+}
