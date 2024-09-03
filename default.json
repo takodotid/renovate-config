@@ -3,7 +3,6 @@
 	"extends": [
 		"config:base",
 		":semanticCommits",
-		"docker:pinDigests",
 		"group:allNonMajor",
 		"group:linters",
 		"helpers:pinGitHubActionDigests",
