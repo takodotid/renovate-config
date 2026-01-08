@@ -1,4 +1,12 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["github>kakushindev/renovate-config"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>kakushindev/renovate-config"
+  ],
+  "hostRules": [
+    {
+      "matchHost": "github.com",
+      "token": "{{ secrets.MEND_GITHUB_PACKAGES_TOKEN }}"
+    }
+  ]
 }
